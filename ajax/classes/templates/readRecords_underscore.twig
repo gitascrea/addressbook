@@ -1,0 +1,33 @@
+<!-- Underscore Template for render Json-Data for Records Table display -->
+<script type="text/html" id='script_{{ data.templateRef }}'>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Vorname</th>
+            <th>Nachname</th>
+            <th>Email</th>
+            <th>Aktualisieren</th>
+            <th>Löschen</th>
+        </tr>
+        <% if (records.length > 0)  { %>
+            <% _.each(records, function(item,key,list) { %>
+            <tr>
+                <td><%= item.id %></td>
+                <td><%= item.first_name %></td>
+                <td><%= item.last_name %></td>
+                <td><%= item.email %></td>
+               <td>
+					<button onclick="crud.call('readRecord',{id: '<%= item.id %>', ref2: '', model: '', remove: true, method: 'post', reload: '', conf: '', render: 'append'})" class="btn btn-warning">Aktualisieren</button>
+				</td>
+				<td>
+					<button onclick="crud.call('deleteRecord',{id: '<%= item.id %>', ref2: 'deleteRecord', model: '', remove: true, method: 'post', reload: 'readRecords',conf: 'Sind Sie sicher, daß Sie den Eintrag löschen wollen?', render: 'prepend'})" class="btn btn-danger">Löschen</button>
+				</td>
+            </tr>
+            <% }); %>
+        <% } else { %>
+            <tr>
+			    <td colspan="6">Keine Datensätze gefunden!</td>
+		    </tr>
+         <% } %>
+    </table>
+</script>

@@ -1,0 +1,42 @@
+<!-- Jquery JS file -->
+<script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
+
+{% if data.clienRendering %}
+    <!-- twig.js, underscore.js or nunjucks.js for template rendering -->
+    {% if data.templateEngine == "twig" %}
+        <script>
+        //workarround for twig.js ver >= 1.11
+        if (typeof window.global === "undefined"){ window.global = window; }
+        </script>
+    {% endif %}
+    <script type="text/javascript" src="assets/js/{{ data.templateEngine }}.js" ></script>
+    {% if data.templateEngine == "underscore" %}
+        {# MVVM-Pattern but View is not loaded by client but submitted by server, this affects underscore but not twig and nunjucks #}
+        {% if data.template != "" %}
+            {% include(data.template) %}
+        {% endif %}  
+        {% if data.templateRead != "" %}
+            {% include(data.templateRead) %}
+        {% endif %}  
+        {% if data.templateNew != "" %} 
+            {% include(data.templateNew) %}
+        {% endif %} 
+        {% include('updateRecord_underscore.twig') %}
+        {% include('deleteRecord_underscore.twig') %}
+        {% include('addRecord_underscore.twig') %}
+    {% endif %}
+{% endif %}
+
+<!-- Bootstrap JS file -->
+<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Custom JS file -->
+<script type="text/javascript" src="assets/js/class_crud.js"></script>
+
+<!-- Init CRUD class -->
+<script>
+$(document).ready(function () {
+    // Create instance of CRUD class and READ recods on page load
+    crud = new CRUD("{{ data.action }}", '{{ data.clienRendering }}', '{{ data.template }}', '{{ data.templateEngine }}', '{{ data.templateRef }}', '{{ data.templatePath }}', '{{ data.controller }}');
+});
+</script>

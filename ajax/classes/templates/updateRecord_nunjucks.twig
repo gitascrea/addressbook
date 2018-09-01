@@ -1,0 +1,10 @@
+<!-- Result popup info after update user -->
+{% if records | length > 0 %}
+	{% for item in records %}
+        <div class="alert alert-{{ item.result }} fade in alert-dismissible">
+            <a href="javascript:$('.alert').remove();" class="close" aria-label="close" title="close">×</a>
+            <strong>{{ item.result | capitalize }}!</strong>. {{ item.command }} was {{ item.not }} sucessfull!
+        </div>
+    {% endfor %}
+{% endif %}
+<!-- // popup -->

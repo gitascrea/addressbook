@@ -1,0 +1,9 @@
+<script type="text/html" id='script_readContact'>
+<div>
+	<% if (records.length > 0)  { %>
+		<% _.each(records, function(item,key,list) { %>
+			<%= item.contact %>
+		<% }); %>
+	<% } %>
+</div>
+</script>

@@ -1,0 +1,12 @@
+<!-- Result popup info after add user -->
+<script type="text/html" id='script_addRecord'>
+<% if (records.length > 0)  { %>
+	<% _.each(records, function(item,key,list) { %>
+        <div class="alert alert-<%= item.result %> fade in alert-dismissible">
+            <a href="javascript:$('.alert').remove();" class="close" aria-label="close" title="close">×</a>
+            <strong><%= crud.capitalize(item.result) %>!</strong>. <%= item.command %> was <%= item.not %> sucessfull!
+        </div>
+    <% }); %>
+<% } %>
+</script>
+<!-- // popup -->

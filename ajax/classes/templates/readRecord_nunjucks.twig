@@ -1,0 +1,39 @@
+<!-- Modal - Update User details -->
+{% if records | length > 0 %}
+	{% for item in records %}
+        <div class="modal fade" id="{{ item.ref | escape }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Aktualisieren</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="update_first_name">Vorname</label>
+                            <input value="{{ item.first_name | escape }}" type="text" id="{{ item.ref | escape }}_first_name" placeholder="Vorname" class="form-control"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="update_last_name">Nachname</label>
+                            <input value="{{ item.last_name | escape }}" type="text" id="{{ item.ref | escape }}_last_name" placeholder="Nachname" class="form-control"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="update_email">Email</label>
+                            <input value="{{ item.email | escape }}" type="text" id="{{ item.ref | escape }}_email" placeholder="Email" class="form-control"/>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Abbruch</button>
+                        <button type="button" class="btn btn-primary" onclick="crud.call('updateRecord',{id: '', ref2: 'readRecord', model: 'users', remove: true, method: 'post', reload: 'readRecords', conf: '', render: 'prepend'})" >Sichern</button>
+                        <input value="{{ item.id | escape }}" type="hidden" id="{{ item.ref | escape }}_id">
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
+<!-- // Modal -->

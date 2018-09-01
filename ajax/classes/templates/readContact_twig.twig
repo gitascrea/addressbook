@@ -1,0 +1,8 @@
+ {# Twig Template for render Array Data from Controller with this View #}
+ <div>
+	{% if records | length > 0 %}
+		{% for key, item in records %}
+			{{ item.contact | escape }}
+		{% endfor %}
+	{% endif %}
+</div>

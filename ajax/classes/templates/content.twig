@@ -1,0 +1,31 @@
+<!-- Content Section -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Anwenderliste</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-left">
+               <a href="contact.php">Kontakt</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <!--button class="btn btn-success" data-toggle="modal" data-target="#add_new_record_modal">Neuer Datensatz</button-->
+                <button class="btn btn-success" data-toggle="modal" onclick="crud.call('newRecord',{id: '', ref2: '', model: '', remove: true, method: 'get', reload: '', conf: '', render: 'append'});">Neuer Datensatz</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Datensätze:</h3>
+
+            <div id="readRecords"></div>
+        </div>
+    </div>
+</div>
+<!-- /Content Section -->
